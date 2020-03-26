@@ -14,7 +14,7 @@ module.exports = {
             city,
             uf
         }); 
-    return res.json(id);
+    return res.json({id});
     },
     async list(req,res){
         const ongs = await connection('ongs').select('*');
