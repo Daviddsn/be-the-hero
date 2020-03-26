@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi'
 import logoImg from '../../assets/logo.svg';
 import api from '../../services/api';
@@ -10,15 +10,15 @@ export default function NewIncidents() {
     const [title,setTitle] = useState('');
     const [description,setDescription] = useState('');
     const [value,setValue] = useState('');
-
+    const history = useHistory();
     async function handleNew(e){
         e.preventDefault();
         const ongId = localStorage.getItem('ongId');
         const data = {title,description,value};
         try{
             await api.post('/incidents/new',data,{headers: { Authorization : ongId}});
-            alert('Criado com Sucesso');
-            
+            history.push('/profile');
+    
         }catch{
             alert( 'Error')
         }
