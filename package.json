@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "celebrate": "^12.0.1"
+  }
+}
